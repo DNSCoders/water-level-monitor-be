@@ -19,9 +19,9 @@ class Dam extends Model
         "awas"
     ];
 
-    public function pob()
+    public function pobs()
     {
-        return $this->hasOne(POB::class);
+        return $this->hasMany(POB::class);
     }
 
     public function debit_reports()

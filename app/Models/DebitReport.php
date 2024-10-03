@@ -9,8 +9,22 @@ class DebitReport extends Model
 {
     use HasFactory;
 
+    protected $fillable =[
+        "dam_id",
+        "limpas",
+        "debit",
+        "cuaca",
+        "debit_ke_saluran_induk",
+        "pob_id"
+    ];
+
     public function dam()
     {
         return $this->belongsTo(Dam::class);
+    }
+
+    public function pob()
+    {
+        return $this->belongsTo(POB::class);
     }
 }

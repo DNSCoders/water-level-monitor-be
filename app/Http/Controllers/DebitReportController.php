@@ -10,13 +10,18 @@ class DebitReportController extends Controller
     //
     public function index()
     {
-        return DebitReport::all();
+        return DebitReport::with('dam.pobs','pob')->get();
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'dam_id' => 'required',
+            'limpas' => 'required',
+            'debit' => 'required',
+            'cuaca' => 'required',
+            'debit_ke_saluran_induk' => 'required',
+            'pob_id' => 'required',
         ]);
 
         return DebitReport::create($request->all());
@@ -30,7 +35,12 @@ class DebitReportController extends Controller
     public function update(Request $request, DebitReport $report)
     {
         $request->validate([
-            'name' => 'required',
+            'dam_id' => 'required',
+            'limpas' => 'required',
+            'debit' => 'required',
+            'cuaca' => 'required',
+            'debit_ke_saluran_induk' => 'required',
+            'pob_id' => 'required',
         ]);
 
         $report->update($request->all());

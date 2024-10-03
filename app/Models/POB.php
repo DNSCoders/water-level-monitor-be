@@ -25,4 +25,8 @@ class POB extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function debit_reports(){
+    //     return $this->belongsTo(DebitReport::class);
+    // }
 }

@@ -66,3 +66,41 @@ Accept: "application/json"
 
 ###
 DELETE http://localhost:8000/api/pob/2
+
+
+### REPORT CRUD
+GET http://localhost:8000/api/reports
+
+###
+POST http://localhost:8000/api/reports
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+    "dam_id" : 2,
+    "limpas" : 0.05,
+    "debit" : 1800,
+    "cuaca" : "mendung",
+    "debit_ke_saluran_induk" : 6032,
+    "pob_id":1
+}
+
+###
+GET http://localhost:8000/api/reports/1
+
+###
+PUT http://localhost:8000/api/reports/1
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+    "dam_id" : 2,
+    "limpas" : 0.1,
+    "debit" : 1800,
+    "cuaca" : "terang",
+    "debit_ke_saluran_induk" : 6032,
+    "pob_id":1
+}
+
+###
+DELETE http://localhost:8000/api/reports/2
