@@ -15,11 +15,28 @@ class DamController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
+        $validate = $request->validate([
+            'river_name' => 'required',
+            'dam_name' => 'required',
+            'long' => 'required',
+            'lat' => 'required',
+            'siap' => 'required',
+            'siaga' => 'required',
+            'awas' => 'required',
         ]);
-
-        return Dam::create($request->all());
+        $save =Dam::create([
+            "river_name"=>$request->river_name,
+            "dam_name"=>$request->dam_name,
+            "long"=>$request->long,
+            "lat"=>$request->lat,
+            "siap"=>$request->siap,
+            "siaga"=>$request->siaga,
+            "awas"=>$request->awas,
+        ]);
+        return response()->json([
+            "status"=>"OKE",
+            "message"=>"Dam Successfully Created!" 
+        ]);
     }
 
     public function show(Dam $dam)
@@ -29,17 +46,29 @@ class DamController extends Controller
 
     public function update(Request $request, Dam $dam)
     {
-        $request->validate([
-            'name' => 'required',
+        $validate = $request->validate([
+            'river_name' => 'required',
+            'dam_name' => 'required',
+            'long' => 'required',
+            'lat' => 'required',
+            'siap' => 'required',
+            'siaga' => 'required',
+            'awas' => 'required',
         ]);
 
         $dam->update($request->all());
-        return $dam;
+        return response()->json([
+            "status"=>"OKE",
+            "message"=>"Dam Successfully updated!" 
+        ]);
     }
 
     public function destroy(Dam $dam)
     {
         $dam->delete();
-        return response(null, 204);
+        return response()->json([
+            "status"=>"OKE",
+            "message"=>"Dam Successfully deleted!" 
+        ]);
     }
 }

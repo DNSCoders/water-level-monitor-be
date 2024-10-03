@@ -9,6 +9,16 @@ class Dam extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "river_name",
+        "dam_name",
+        "long",
+        "lat",
+        "siap",
+        "siaga",
+        "awas"
+    ];
+
     public function pob()
     {
         return $this->hasOne(POB::class);
