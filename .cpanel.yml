@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/svnvbkdl/water-level-monitor-be/
+    - /bin/cp -r * $DEPLOYPATH
