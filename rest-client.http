@@ -35,3 +35,34 @@ Accept: "application/json"
 
 ###
 DELETE http://localhost:8000/api/dams/3
+
+### POB CRUD
+GET http://localhost:8000/api/pob
+
+###
+POST http://localhost:8000/api/pob
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+    "name" : "POB 2",
+    "phone_number":"082222222",
+    "dam_id" : 1
+}
+
+###
+GET http://localhost:8000/api/pob/2
+
+###
+PUT http://localhost:8000/api/pob/2
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+    "name" : "POB 2 update",
+    "phone_number":"082222222",
+    "dam_id" : 2
+}
+
+###
+DELETE http://localhost:8000/api/pob/2
