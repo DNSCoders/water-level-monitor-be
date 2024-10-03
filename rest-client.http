@@ -4,18 +4,28 @@ Content-Type: "application/json"
 Accept: "application/json"
 
 {
-    "phone_number":"081111111",
-    "password": "081111111"
+    "phone_number":"super@admin.com",
+    "password": "super@admin.com"
+}
+###LOGOUT
+POST http://localhost:8000/api/logout
+Content-Type: "application/json"
+Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
+
+{
+    "phone_number":"super@admin.com",
+    "password": "super@admin.com"
 }
 ### CRUD DAMS
 GET http://localhost:8000/api/dams
 Accept: "application/json"
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTM5OTk1LCJleHAiOjE3Mjc5NDM1OTUsIm5iZiI6MTcyNzkzOTk5NSwianRpIjoianMxRkNGUVNJanpRU1ZTayIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.MejPs6m7H_DrJQounZpjQNjUMFj-J3GKhKJxbD1PT3s
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
 ###
 POST http://localhost:8000/api/dams
 Content-Type: "application/json"
 Accept: "application/json"
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTM5OTk1LCJleHAiOjE3Mjc5NDM1OTUsIm5iZiI6MTcyNzkzOTk5NSwianRpIjoianMxRkNGUVNJanpRU1ZTayIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.MejPs6m7H_DrJQounZpjQNjUMFj-J3GKhKJxbD1PT3s
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
 
 {
     "river_name" : "TEST",
