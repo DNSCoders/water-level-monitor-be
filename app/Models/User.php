@@ -46,6 +46,11 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
+    public function pob()
+    {
+        return $this->hasOne(POB::class);
+    }
+
      // JWT methods
      public function getJWTIdentifier()
      {

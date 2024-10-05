@@ -38,14 +38,14 @@ class AuthController extends Controller
         $credentials = $request->only('phone_number', 'password');
 
     // Find the user by phone_number (which is actually checking the email)
-        $user = User::where('email', $credentials['phone_number'])->first();
+        $user = User::with('pob')->where('email', $credentials['phone_number'])->first();
 
         if (!$user ) {
-            return response()->json(['message' => "User doesn't exist"]);
+            return response()->json(['status'=>404,'message' => "User doesn't exist"]);
         }
 
         if(!Hash::check($credentials['password'], $user->password)){
-            return response()->json(['message' => "Wrong Password"]);
+            return response()->json(['status'=>401,'message' => "Wrong Password"]);
         }
 
         // Attempt to log in the user and generate JWT token
@@ -78,10 +78,14 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'data' => auth()->user()
+            'status'=>200,
+            'message'=>'Login Success',
+            'data'=>[
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60,
+                'data' => auth()->user()
+            ]
         ]);
     }
 }
