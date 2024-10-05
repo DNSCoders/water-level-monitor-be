@@ -13,11 +13,15 @@ Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::get('me', [AuthController::class, 'me'])->middleware('auth:api');
 
+Route::get('dams', [DamController::class, 'index']);
+Route::get('dams/{dam}', [DamController::class, 'show']);
+
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('dams', DamController::class);
+    Route::apiResource('dams', DamController::class)->except(['index','show']); // Other dam routes still require auth
     Route::apiResource('pob', POBController::class);
     Route::apiResource('reports', DebitReportController::class);
 });
+
 
 
 // Route::get('/user', function (Request $request) {

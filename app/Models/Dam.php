@@ -24,8 +24,34 @@ class Dam extends Model
         return $this->hasMany(POB::class);
     }
 
-    public function debit_reports()
+    public function latest_debit_report()
     {
-        return $this->hasMany(DebitReport::class);
+        return $this->hasOne(DebitReport::class)->latestOfMany(); // Get the latest report
     }
+
+    // Add a custom accessor to calculate the status
+    public function getStatusAttribute()
+    {
+        // Default status
+        $status = 'Aman';
+
+        // Check if there's a latest debit report
+        if ($this->latest_debit_report) {
+            $limpas = $this->latest_debit_report->limpas;
+
+            // Apply the logic for the status based on limpas and alert levels
+            if ($limpas < $this->siap) {
+                $status = 'Aman';
+            } elseif ($limpas >= $this->siap && $limpas < $this->siaga) {
+                $status = 'Siaga';
+            } elseif ($limpas >= $this->siaga && $limpas < $this->awas) {
+                $status = 'Waspada';
+            } elseif ($limpas >= $this->awas) {
+                $status = 'Awas';
+            }
+        }
+
+        return $status;
+    }
+
 }

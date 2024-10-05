@@ -41,7 +41,14 @@ class DamController extends Controller
 
     public function show(Dam $dam)
     {
-        return $dam;
+        $dam->load('latest_debit_report');
+        $dam->latest_debit_report->status = $dam->status;
+        // Return response with the dam data and status
+        return response()->json([
+            "status" => 200,
+            "message" => "Data Retrieved SuccessFully",
+            "data" => $dam
+        ]);
     }
 
     public function update(Request $request, Dam $dam)
