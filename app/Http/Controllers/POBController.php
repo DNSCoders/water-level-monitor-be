@@ -15,7 +15,7 @@ class POBController extends Controller
             "status"=>200,
             "message"=> "Data Retieved",
             "data"=> POB::with('user','dam')->get()
-        ]);
+        ],200);
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ class POBController extends Controller
             "status" => 200,
             "message" => "Data Retrieved SuccessFully",
             "data" => $pob->with('user','dam')->find($pob->id)
-        ]);
+        ],200);
     }
 
     public function update(Request $request, POB $pob)
@@ -100,8 +100,8 @@ class POBController extends Controller
     {
         $pob->delete();
         return response()->json([
-            "status"=>204,
+            "status"=>"OKE",
             "message"=>"pob Successfully deleted!" 
-        ]);
+        ],204);
     }
 }

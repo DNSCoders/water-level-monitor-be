@@ -11,10 +11,10 @@ class DebitReportController extends Controller
     public function index()
     {
         return response()->json([
-            "status"=>200,
+            "status"=>"OKE",
             "message"=> "Data Retieved",
             "data"=> DebitReport::with('dam.pobs','pob')->get()
-        ]);
+        ],200);
     }
 
     public function store(Request $request)
@@ -30,19 +30,19 @@ class DebitReportController extends Controller
 
         $save = DebitReport::create($request->all());
         return response()->json([
-            "status"=>201,
+            "status"=>"OKE",
             "message"=>"report Successfully Created!",
             "data"=>$save
-        ]);
+        ],201);
     }
 
     public function show(DebitReport $report)
     {
         return response()->json([
-            "status" => 200,
+            "status" => "OKE",
             "message" => "Data Retrieved SuccessFully",
             "data" => $report
-        ]);
+        ],200);
     }
 
     public function update(Request $request, DebitReport $report)
@@ -58,18 +58,18 @@ class DebitReportController extends Controller
 
         $update= $report->update($request->all());
         return response()->json([
-            "status"=>200,
+            "status"=>"OKE",
             "message"=>"Report Successfully updated!",
             "data"=>$update 
-        ]);
+        ],200);
     }
 
     public function destroy(DebitReport $report)
     {
         $report->delete();
         return response()->json([
-            "status"=>204,
+            "status"=>"OKE",
             "message"=>"Report Successfully deleted!" 
-        ]);
+        ],204);
     }
 }

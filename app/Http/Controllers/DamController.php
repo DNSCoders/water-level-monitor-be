@@ -11,10 +11,10 @@ class DamController extends Controller
     public function index()
     {
         return response()->json([
-            "status"=>200,
+            "status"=>"OKE",
             "message"=> "Data Retieved",
             "data"=> Dam::all()
-        ]);
+        ],200);
     }
 
     public function store(Request $request)
@@ -38,10 +38,10 @@ class DamController extends Controller
             "awas"=>$request->awas,
         ]);
         return response()->json([
-            "status"=>201,
+            "status"=>"OKE",
             "message"=>"Dam Successfully Created!",
             "data"=>$save
-        ]);
+        ],201);
     }
 
     public function show(Dam $dam)
@@ -50,10 +50,10 @@ class DamController extends Controller
         $dam->latest_debit_report->status = $dam->status;
         // Return response with the dam data and status
         return response()->json([
-            "status" => 200,
+            "status" => "OKE",
             "message" => "Data Retrieved SuccessFully",
             "data" => $dam
-        ]);
+        ],200);
     }
 
     public function update(Request $request, Dam $dam)
@@ -70,18 +70,18 @@ class DamController extends Controller
 
         $update = $dam->update($request->all());
         return response()->json([
-            "status"=>200,
+            "status"=>"OKE",
             "message"=>"Dam Successfully updated!",
             "data"=>$update 
-        ]);
+        ],200);
     }
 
     public function destroy(Dam $dam)
     {
         $dam->delete();
         return response()->json([
-            "status"=>204,
+            "status"=>"OKE",
             "message"=>"Dam Successfully deleted!" 
-        ]);
+        ],204);
     }
 }

@@ -41,11 +41,11 @@ class AuthController extends Controller
         $user = User::with('pob')->where('email', $credentials['phone_number'])->first();
 
         if (!$user ) {
-            return response()->json(['status'=>404,'message' => "User doesn't exist"]);
+            return response()->json(['status'=>"FAIL",'message' => "User doesn't exist"],404);
         }
 
         if(!Hash::check($credentials['password'], $user->password)){
-            return response()->json(['status'=>401,'message' => "Wrong Password"]);
+            return response()->json(['status'=>"FAIL",'message' => "Wrong Password"],401);
         }
 
         // Attempt to log in the user and generate JWT token
@@ -59,7 +59,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(["status"=>"OKE",'message' => 'Successfully logged out'],200);
     }
 
     // Refresh JWT token
@@ -78,7 +78,7 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
-            'status'=>200,
+            'status'=>"OKE",
             'message'=>'Login Success',
             'data'=>[
                 'access_token' => $token,
@@ -86,6 +86,6 @@ class AuthController extends Controller
                 'expires_in' => auth()->factory()->getTTL() * 60,
                 'data' => auth()->user()
             ]
-        ]);
+        ],200);
     }
 }
