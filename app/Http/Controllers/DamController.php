@@ -38,7 +38,7 @@ class DamController extends Controller
             "awas"=>$request->awas,
         ]);
         return response()->json([
-            "status"=>"OKE",
+            "status"=>201,
             "message"=>"Dam Successfully Created!",
             "data"=>$save
         ]);
@@ -70,7 +70,7 @@ class DamController extends Controller
 
         $update = $dam->update($request->all());
         return response()->json([
-            "status"=>"OKE",
+            "status"=>200,
             "message"=>"Dam Successfully updated!",
             "data"=>$update 
         ]);
@@ -80,7 +80,7 @@ class DamController extends Controller
     {
         $dam->delete();
         return response()->json([
-            "status"=>"OKE",
+            "status"=>204,
             "message"=>"Dam Successfully deleted!" 
         ]);
     }

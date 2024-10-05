@@ -11,7 +11,11 @@ class POBController extends Controller
     //
     public function index()
     {
-        return POB::with('user','dam')->get();
+        return response()->json([
+            "status"=>200,
+            "message"=> "Data Retieved",
+            "data"=> POB::with('user','dam')->get()
+        ]);
     }
 
     public function store(Request $request)
@@ -41,13 +45,18 @@ class POBController extends Controller
         return response()->json([
             'message' => 'POB and user created successfully',
             'control_point' => $pob,
-            'user' => $user
+            'user' => $user,
+            'status'=> 201
         ], 201);  // 201 means resource created
     }
 
     public function show(POB $pob)
     {
-        return $pob->with('user','dam')->find($pob->id);
+        return response()->json([
+            "status" => 200,
+            "message" => "Data Retrieved SuccessFully",
+            "data" => $pob->with('user','dam')->find($pob->id)
+        ]);
     }
 
     public function update(Request $request, POB $pob)
@@ -82,7 +91,8 @@ class POBController extends Controller
         return response()->json([
             'message' => 'POB and user updated successfully',
             'control_point' => $pob,
-            'user' => $pob->user
+            'user' => $pob->user,
+            'status'=> 200
         ], 200);  // 200 means resource updated
     }
 
@@ -90,7 +100,7 @@ class POBController extends Controller
     {
         $pob->delete();
         return response()->json([
-            "status"=>"OKE",
+            "status"=>204,
             "message"=>"pob Successfully deleted!" 
         ]);
     }
