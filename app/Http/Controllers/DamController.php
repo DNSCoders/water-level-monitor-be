@@ -10,7 +10,11 @@ class DamController extends Controller
     //
     public function index()
     {
-        return Dam::all();
+        return response()->json([
+            "status"=>200,
+            "message"=> "Data Retieved",
+            "data"=> Dam::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -35,7 +39,8 @@ class DamController extends Controller
         ]);
         return response()->json([
             "status"=>"OKE",
-            "message"=>"Dam Successfully Created!" 
+            "message"=>"Dam Successfully Created!",
+            "data"=>$save
         ]);
     }
 
@@ -63,10 +68,11 @@ class DamController extends Controller
             'awas' => 'required',
         ]);
 
-        $dam->update($request->all());
+        $update = $dam->update($request->all());
         return response()->json([
             "status"=>"OKE",
-            "message"=>"Dam Successfully updated!" 
+            "message"=>"Dam Successfully updated!",
+            "data"=>$update 
         ]);
     }
 
