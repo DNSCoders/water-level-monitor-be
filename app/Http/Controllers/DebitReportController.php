@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class DebitReportController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $data = DebitReport::with('dam.pobs','pob');
         $user = auth()->user();
@@ -18,7 +18,7 @@ class DebitReportController extends Controller
         if($user->pob){
             $data->where('pob_id',$user->pob->id);
         }
-        $data=$data->get();
+        $data=$data->paginate($request->query('pageSize'));
         return response()->json([
             "status"=>"OKE",
             "message"=> "Data Retieved",

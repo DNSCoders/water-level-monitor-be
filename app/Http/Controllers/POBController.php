@@ -9,12 +9,12 @@ use App\Models\User;
 class POBController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         return response()->json([
             "status"=>200,
             "message"=> "Data Retieved",
-            "data"=> POB::with('user','dam')->get()
+            "data"=> POB::with('user','dam')->paginate($request->query('pageSize'))
         ],200);
     }
 

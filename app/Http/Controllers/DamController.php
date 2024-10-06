@@ -8,12 +8,12 @@ use App\Models\Dam;
 class DamController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         return response()->json([
             "status"=>"OKE",
             "message"=> "Data Retieved",
-            "data"=> Dam::with('latest_debit_report')->get()
+            "data"=> Dam::with('latest_debit_report')->paginate($request->query('pageSize'))
         ],200);
     }
 
