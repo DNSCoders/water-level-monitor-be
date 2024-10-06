@@ -10,10 +10,11 @@ class DebitReportController extends Controller
     //
     public function index()
     {
+        $data = DebitReport::with('dam.pobs','pob')->get();
         return response()->json([
             "status"=>"OKE",
             "message"=> "Data Retieved",
-            "data"=> DebitReport::with('dam.pobs','pob')->get()
+            "data"=> $data
         ],200);
     }
 

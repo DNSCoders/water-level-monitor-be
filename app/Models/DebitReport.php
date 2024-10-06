@@ -17,6 +17,7 @@ class DebitReport extends Model
         "debit_ke_saluran_induk",
         "pob_id"
     ];
+    protected $appends = ['status'];
 
     public function dam()
     {
@@ -26,5 +27,30 @@ class DebitReport extends Model
     public function pob()
     {
         return $this->belongsTo(POB::class);
+    }
+
+    // Add a custom accessor to calculate the status
+    public function getStatusAttribute()
+    {
+        // Default status
+        $status = 'Aman';
+
+        // Check if there's a latest debit report
+        
+        $limpas = $this->limpas;
+
+            // Apply the logic for the status based on limpas and alert levels
+        if ($limpas < $this->siap) {
+            $status = 'Aman';
+        } elseif ($limpas >= $this->dam->siap && $limpas < $this->siaga) {
+            $status = 'Siaga';
+        } elseif ($limpas >= $this->dam->siaga && $limpas < $this->awas) {
+            $status = 'Waspada';
+        } elseif ($limpas >= $this->dam->awas) {
+            $status = 'Awas';
+        }
+        
+
+        return $status;
     }
 }
