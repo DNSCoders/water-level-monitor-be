@@ -23,7 +23,6 @@ class DebitReportController extends Controller
             "status"=>"OKE",
             "message"=> "Data Retieved",
             "data"=> $data,
-            'user'=> $user
         ],200);
     }
 
