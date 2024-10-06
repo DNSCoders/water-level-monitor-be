@@ -4,17 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DebitReport;
+use Illuminate\Support\Facades\Auth;
 
 class DebitReportController extends Controller
 {
     //
     public function index()
     {
-        $data = DebitReport::with('dam.pobs','pob')->get();
+        $data = DebitReport::with('dam.pobs','pob');
+        $user = auth()->user();
+        $user->load('pob');
+
+        if($user->pob){
+            $data->where('pob_id',$user->pob->id);
+        }
+        $data=$data->get();
         return response()->json([
             "status"=>"OKE",
             "message"=> "Data Retieved",
-            "data"=> $data
+            "data"=> $data,
+            'user'=> $user
         ],200);
     }
 
