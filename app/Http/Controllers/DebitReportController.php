@@ -19,11 +19,7 @@ class DebitReportController extends Controller
             $data->where('pob_id',$user->pob->id);
         }
         $data=$data->paginate($request->query('pageSize'));
-        return response()->json([
-            "status"=>"OKE",
-            "message"=> "Data Retieved",
-            "data"=> $data,
-        ],200);
+        return response()->json($data,200);
     }
 
     public function store(Request $request)

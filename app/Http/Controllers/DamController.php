@@ -10,11 +10,8 @@ class DamController extends Controller
     //
     public function index(Request $request)
     {
-        return response()->json([
-            "status"=>"OKE",
-            "message"=> "Data Retieved",
-            "data"=> Dam::with('latest_debit_report')->paginate($request->query('pageSize'))
-        ],200);
+        $data =  Dam::with('latest_debit_report')->paginate($request->query('pageSize'));
+        return response()->json($data,200);
     }
 
     public function store(Request $request)
