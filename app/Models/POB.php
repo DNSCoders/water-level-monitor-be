@@ -26,6 +26,18 @@ class POB extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($pob) {
+            // Check if the POB has an associated user
+            if ($pob->user) {
+                $pob->user->delete();
+            }
+        });
+    }
+
     // public function debit_reports(){
     //     return $this->belongsTo(DebitReport::class);
     // }
