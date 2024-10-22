@@ -1,28 +1,37 @@
+@host = http://localhost:8000/api
+
 ###LOGIN
-POST http://localhost:8000/api/login
+POST {{host}}/login
 Content-Type: "application/json"
 Accept: "application/json"
 
 {
-    "phone_number":"super@admin.com",
-    "password": "super@admin.com"
+    "phone_number":"082686",
+    "password": "082686"
 }
 ###LOGOUT
-POST http://localhost:8000/api/logout
+POST {{host}}/logout
 Content-Type: "application/json"
 Accept: "application/json"
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4OTE0MjU2LCJleHAiOjE3Mjg5MTc4NTYsIm5iZiI6MTcyODkxNDI1NiwianRpIjoiWXUzVDFGN1ZRUmVVdkhTdyIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.dGC703Bd3MjKz9OsczF2Ul0UE_SxspAdRJ3UPPKu5mY
 
 {
     "phone_number":"super@admin.com",
     "password": "super@admin.com"
 }
+
+###
+GET {{host}}/me
+Content-Type: "application/json"
+Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MjAzNjI4LCJleHAiOjE3MjgyMDcyMjgsIm5iZiI6MTcyODIwMzYyOCwianRpIjoianJkTG8yWEM1dnZkWlJERCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Hsu1thM8uHyTCANIv5fcAwOlkuOEkUkWGtxS9GaRR3I
+
 ### CRUD DAMS
-GET http://localhost:8000/api/dams
+GET {{host}}/dams
 Accept: "application/json"
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
 ###
-POST http://localhost:8000/api/dams
+POST {{host}}/api/dams
 Content-Type: "application/json"
 Accept: "application/json"
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTQwMzM3LCJleHAiOjE3Mjc5NDM5MzcsIm5iZiI6MTcyNzk0MDMzNywianRpIjoiTUJuTXBlMkJ1dFZWWUNxZCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.mhb0gfU5sR8ISKP23oj7r8j5CaHagDZ8Royvz2zGIfk
@@ -38,12 +47,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vb
 }
 
 ###
-GET http://localhost:8000/api/dams/4
+GET {{host}}/dams/2
 Accept: "application/json"
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI3OTM5OTk1LCJleHAiOjE3Mjc5NDM1OTUsIm5iZiI6MTcyNzkzOTk5NSwianRpIjoianMxRkNGUVNJanpRU1ZTayIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.MejPs6m7H_DrJQounZpjQNjUMFj-J3GKhKJxbD1PT3s
 
 ###
-PUT http://localhost:8000/api/dams/2
+PUT {{host}}/dams/2
 Content-Type: "application/json"
 Accept: "application/json"
 
@@ -58,27 +67,31 @@ Accept: "application/json"
 }
 
 ###
-DELETE http://localhost:8000/api/dams/3
+DELETE {{host}}/dams/3
 
 ### POB CRUD
-GET http://localhost:8000/api/pob
-
-###
-POST http://localhost:8000/api/pob
+GET {{host}}/pob
 Content-Type: "application/json"
 Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MTk2NDc5LCJleHAiOjE3MjgyMDAwNzksIm5iZiI6MTcyODE5NjQ3OSwianRpIjoicFljQWJCV0g1WDZpTjAxRyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.K-TRPJ3cb5l70DxYOBVAdChmr-x1RJ-TdYyrCgXN900
+
+###
+POST {{host}}/pob
+Content-Type: "application/json"
+Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MjA0MjQ4LCJleHAiOjE3MjgyMDc4NDgsIm5iZiI6MTcyODIwNDI0OCwianRpIjoiNXdlWmtzdE9lUkRncVRHQyIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.l8yQ9s9R5mvRvriZMKi7QpclXdsJaGPRXfIPoeI6za0
 
 {
-    "name" : "POB 2",
-    "phone_number":"082222222",
-    "dam_id" : 1
+    "name" : "POB 6",
+    "phone_number":"082686",
+    "dam_id" : 6
 }
 
 ###
-GET http://localhost:8000/api/pob/2
+GET {{host}}/pob/2
 
 ###
-PUT http://localhost:8000/api/pob/2
+PUT {{host}}/pob/2
 Content-Type: "application/json"
 Accept: "application/json"
 
@@ -89,31 +102,39 @@ Accept: "application/json"
 }
 
 ###
-DELETE http://localhost:8000/api/pob/2
+DELETE {{host}}/pob/3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MTkwMTQ2LCJleHAiOjE3MjgxOTM3NDYsIm5iZiI6MTcyODE5MDE0NiwianRpIjoiQVFYVFh1OGhTY2Y3WVRDaCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xQR444rAaia_X6B0-H50xSKLYHda8MI0SMqkTW33JKY
 
 
 ### REPORT CRUD
-GET http://localhost:8000/api/reports
-
-###
-POST http://localhost:8000/api/reports
+GET {{host}}/reports?pageSize=2&page=2
 Content-Type: "application/json"
 Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MjI0ODU5LCJleHAiOjE3MjgyMjg0NTksIm5iZiI6MTcyODIyNDg1OSwianRpIjoiRVJsYm1Gc0E3cjI3bFdEQSIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.T6E_w-dwI7UrFImd8rDXWxZEi2Qc1PlWE1plguhMtTs
+
+###
+POST {{host}}/reports
+Content-Type: "application/json"
+Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MjA0MzczLCJleHAiOjE3MjgyMDc5NzMsIm5iZiI6MTcyODIwNDM3MywianRpIjoid1ZpbEFITzlQNHRib1ZCbyIsInN1YiI6IjkiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZksvorXkWYWB-Yr7FIH6_Z9796pD9r8AmT8xcN2rvOw
 
 {
-    "dam_id" : 2,
+    "dam_id" : 6,
     "limpas" : 0.05,
     "debit" : 1800,
     "cuaca" : "mendung",
     "debit_ke_saluran_induk" : 6032,
-    "pob_id":1
+    "pob_id":4
 }
 
 ###
-GET http://localhost:8000/api/reports/1
+GET {{host}}/reports/1
+Content-Type: "application/json"
+Accept: "application/json"
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI4MTk2NDc5LCJleHAiOjE3MjgyMDAwNzksIm5iZiI6MTcyODE5NjQ3OSwianRpIjoicFljQWJCV0g1WDZpTjAxRyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.K-TRPJ3cb5l70DxYOBVAdChmr-x1RJ-TdYyrCgXN900
 
 ###
-PUT http://localhost:8000/api/reports/1
+PUT {{host}}/reports/4
 Content-Type: "application/json"
 Accept: "application/json"
 
@@ -127,4 +148,4 @@ Accept: "application/json"
 }
 
 ###
-DELETE http://localhost:8000/api/reports/2
+DELETE {{host}}/reports/2
