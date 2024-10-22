@@ -40,17 +40,18 @@ class DebitReport extends Model
         $limpas = $this->limpas;
 
             // Apply the logic for the status based on limpas and alert levels
-        if ($limpas < $this->siap) {
+        if ($limpas < $this->dam->siap) {
             $status = 'Aman';
-        } elseif ($limpas >= $this->dam->siap && $limpas < $this->siaga) {
+        } elseif ($limpas >= $this->dam->siap && $limpas < $this->dam->siaga) {
+            $status = 'Siap';
+        } elseif ($limpas >= $this->dam->siaga && $limpas < $this->dam->awas) {
             $status = 'Siaga';
-        } elseif ($limpas >= $this->dam->siaga && $limpas < $this->awas) {
-            $status = 'Waspada';
         } elseif ($limpas >= $this->dam->awas) {
             $status = 'Awas';
         }
         
 
         return $status;
+        
     }
 }
