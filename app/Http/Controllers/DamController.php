@@ -11,7 +11,43 @@ class DamController extends Controller
     public function index(Request $request)
     {
         $data =  Dam::with('latest_debit_report')->paginate($request->query('pageSize'));
-        return response()->json($data,200);
+        $response = [
+            'data' => $data->items(), // Use items() to get the paginated data array
+            'counter_status' => [
+                "awas" => $this->counter($data->items(),"Awas"),
+                "siap" => $this->counter($data->items(),"Siap"),
+                "siaga" => $this->counter($data->items(),"Siaga"),
+                "aman" => $this->counter($data->items(),"Aman"),
+                "unreported"=> $this->counter($data->items(), "unreported")
+            ],
+            'pagination' => [
+                'total' => $data->total(),
+                'count' => $data->count(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'total_pages' => $data->lastPage(),
+            ]
+        ];
+    
+        return response()->json($response, 200);
+        // return response()->json($data,200);
+    }
+
+    protected function counter($data,$status){
+        $counter = 0;
+        foreach($data as $dt){
+            if($status == "unreported"){
+                if($dt->latest_debit_report == null){
+                    $counter++;
+                }
+            }else{
+                if($dt->latest_debit_report && $dt->latest_debit_report->status === $status){
+                    $counter++;
+                }
+            }
+
+        }
+        return $counter;
     }
 
     public function store(Request $request)
