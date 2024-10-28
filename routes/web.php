@@ -8,7 +8,9 @@ Route::get('/', function () {
 
 
 Route::prefix('export')->group(function () {
-    Route::post('/dam', [ExportFileController::class, 'export_dam']);
-    Route::post('/reports', [ExportFileController::class, 'export_report']);
+    Route::post('/dam', [ExportFileController::class, 'download_dam']);
+    Route::post('/reports', [ExportFileController::class, 'download_report']);
+    Route::get('/dam/preview', [ExportFileController::class, 'preview_dam']);
+    Route::get('/reports/preview', [ExportFileController::class, 'preview_report']);
 });
 
