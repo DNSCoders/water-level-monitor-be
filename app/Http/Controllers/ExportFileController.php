@@ -16,7 +16,7 @@ class ExportFileController extends Controller
 
         $dam_id =  $request->input('dam_id');
         $startDate = $request->input('start_date'); // e.g., '2024-01-01'
-        $endDate = $request->input('end_date');
+        $endDate = $request->input('end_date') ?? Carbon::now()->format('Y-m-d');
 
         $data = DebitReport::with('dam.pobs','pob');
         
@@ -70,7 +70,7 @@ class ExportFileController extends Controller
 
         $dam_id =  $request->query('dam_id');
         $startDate = $request->query('start_date'); // e.g., '2024-01-01'
-        $endDate = $request->query('end_date');
+        $endDate = $request->query('end_date') ?? Carbon::now()->format('Y-m-d');
 
         $data = DebitReport::with('dam.pobs','pob');
         
