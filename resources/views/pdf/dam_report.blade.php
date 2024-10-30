@@ -15,7 +15,7 @@
         p{ margin-top: 2px;font-size:14px;}
         .header img { height: 60px; }
         .table-body { width: 100%; border-collapse: collapse; }
-        .table-body th, .table-body td { border: 1px solid #005f72; padding: 5px; text-align: left;vertical-align: text-top; }
+        .table-body th, .table-body td { border: 1px solid #005f72; padding: 5px; text-align: left;vertical-align: text-top; font-size:14px;}
         th{ background-color:#A6A6A6;padding:10px;font-weight:normal;}
         td{ text-align:left;vertical-align: text-top;}
         .bg-blue { background-color: #63C1D4; color:white;padding:10px;margin-bottom:25px; }
@@ -26,7 +26,7 @@
             color: #005f72; /* Warna teks */
             position: absolute;
             font-weight:bold;
-            font-size:18px;
+            font-size:16px;
             right:0;
         }
 
@@ -39,19 +39,20 @@
     </style>
 </head>
 <body>
-    <table style="width: 100%;border-collapse:collapse;border:none;">
+    <table style="width: 100%;border-collapse:collapse;border:none;table-layout:fixed;">
         <tr>
-            <td>
-            <img src="{{ public_path('logo.png') }}" alt="Logo" style="height: 90px;">
+            <td style="vertical-align:middle;width:15%;">
+                <img src="{{ public_path('logo.png') }}" alt="Logo" style="height:90px;object-fit:contain;">
             </td>
             <td>
-                <h3 style="margin-bottom:1px;">PEMERINTAH PROVINSI JAWA TENGAH <br/> DINAS PEKERJAAN UMUM SUMBER DAYA AIR<br/> BALAI PENGELOLAAN SUMBER DAYA AIR PEMALI COMAL</h3>
+                <h4 style="margin-bottom:1px;text-align:center;">PEMERINTAH PROVINSI JAWA TENGAH <br/> DINAS PEKERJAAN UMUM SUMBER DAYA AIR<br/> BALAI PENGELOLAAN SUMBER DAYA AIR PEMALI COMAL</h4>
                 <p style="text-align:center;">
                     Jl. Dr. Sutomo No 53, Telp: (0283) 351011 - 356259
                     <br>
                     Faksimile 02883-356259 Email : balaipsdapc53@gmail.com
                 </p>
             </td>
+            <td style="vertical-align:middle;width:15%;"></td>
         </tr>
     </table>
     <div class="header">
@@ -59,8 +60,8 @@
        
     </div>
 
-    <h3 style="color:#005f72;">REKAPITULASI PANTAUAN WADUK DAN BENDUNG KONTROL POINT<br>WILAYAH BALAI PSDA PEMALI COMAL</h3>
-    <div style="padding:0 25% 0 25%;">
+    <h4 style="color:#005f72;text-align:center;">REKAPITULASI PANTAUAN WADUK DAN BENDUNG KONTROL POINT<br>WILAYAH BALAI PSDA PEMALI COMAL</h4>
+    <div style="padding:0 25% 0 25%;text-align:center;">
         <div class="bg-blue bold">Tanggal: {{ $date }}</div>
     </div>
     <table class='table-body'>
