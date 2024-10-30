@@ -16,7 +16,7 @@ class ExportFileController extends Controller
 
         $dam_id =  $request->input('dam_id');
         $startDate = Carbon::parse($request->input('start_date'))->startOfDay(); // e.g., '2024-01-01'
-        $endDate = Carbon::parse($request->input('end_date')->endOfDay() ?? Carbon::now()->format('Y-m-d'))->endOfDay();
+        $endDate = Carbon::parse($request->input('end_date') ?? Carbon::now()->format('Y-m-d'))->endOfDay();
 
         $data = DebitReport::with('dam.pobs','pob');
         
@@ -70,7 +70,7 @@ class ExportFileController extends Controller
 
         $dam_id =  $request->query('dam_id');
         $startDate = Carbon::parse($request->query('start_date'))->startOfDay(); // e.g., '2024-01-01'
-        $endDate = Carbon::parse($request->query('end_date')->endOfDay() ?? Carbon::now()->format('Y-m-d'))->endOfDay();
+        $endDate = Carbon::parse($request->query('end_date') ?? Carbon::now()->format('Y-m-d'))->endOfDay();
 
         $data = DebitReport::with('dam.pobs','pob');
         
