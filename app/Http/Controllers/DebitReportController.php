@@ -5,19 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DebitReport;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class DebitReportController extends Controller
 {
     //
     public function index(Request $request)
     {
+        $dam_id =  $request->query('dam_id');
+        $startDate = Carbon::parse($request->query('start_date'))->startOfDay(); // e.g., '2024-01-01'
+        $endDate = Carbon::parse($request->query('end_date') ?? Carbon::now()->format('Y-m-d'))->endOfDay();
+
         $data = DebitReport::with('dam.pobs','pob');
         $user = auth()->user();
         $user->load('pob');
 
+        
+        if($dam_id){
+            $data->where('dam_id',$dam_id);
+        }
+        
+        if($request->query('start_date') && $endDate){
+            $data->whereBetween('created_at', [$startDate, $endDate])->get();
+        }
+
+
         if($user->pob){
             $data->where('pob_id',$user->pob->id);
         }
+
         $data=$data->paginate($request->query('pageSize'));
         return response()->json($data,200);
     }

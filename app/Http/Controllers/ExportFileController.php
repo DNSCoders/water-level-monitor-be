@@ -25,7 +25,7 @@ class ExportFileController extends Controller
             $data->where('dam_id',$dam_id);
         }
         
-        if($startDate && $endDate){
+        if($request->input('start_date') && $endDate){
             $data->whereBetween('created_at', [$startDate, $endDate])->get();
 
         }
@@ -79,7 +79,7 @@ class ExportFileController extends Controller
             $data->where('dam_id',$dam_id);
         }
         
-        if($startDate && $endDate){
+        if($request->query('start_date') && $endDate){
             $data->whereBetween('created_at', [$startDate, $endDate])->get();
 
         }
