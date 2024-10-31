@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dam;
+use Carbon\Carbon;
 
 class DamController extends Controller
 {
@@ -11,6 +12,13 @@ class DamController extends Controller
     public function index(Request $request)
     {
         $data =  Dam::with('latest_debit_report')->paginate($request->query('pageSize'));
+
+        $latestDate = collect($data->items())->map(function ($dam) {
+            return $dam->latest_debit_report->created_at ?? null;
+        })->filter()->max();
+        
+        $date = $latestDate ? Carbon::parse($latestDate)->format('d F Y') : now()->format('d F Y');
+
         $response = [
             'data' => $data->items(), // Use items() to get the paginated data array
             'counter_status' => [
@@ -20,6 +28,7 @@ class DamController extends Controller
                 "aman" => $this->counter($data->items(),"Aman"),
                 "unreported"=> $this->counter($data->items(), "unreported")
             ],
+            'latest_report_date'=>$date,
             'pagination' => [
                 'total' => $data->total(),
                 'count' => $data->count(),
