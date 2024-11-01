@@ -78,6 +78,8 @@ class DamController extends Controller
             "siap"=>$request->siap,
             "siaga"=>$request->siaga,
             "awas"=>$request->awas,
+            "rtsp_port"=>$request->rtsp_port,
+            "status"=>$request->status
         ]);
         return response()->json([
             "status"=>"OKE",
@@ -85,6 +87,7 @@ class DamController extends Controller
             "data"=>$save
         ],201);
     }
+
 
     public function show(Dam $dam)
     {
