@@ -17,7 +17,7 @@ class Dam extends Model
         "siap",
         "siaga",
         "awas",
-        "status",
+        "state",
         "rtsp_port"
     ];
 

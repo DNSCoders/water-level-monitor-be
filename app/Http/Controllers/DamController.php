@@ -79,7 +79,7 @@ class DamController extends Controller
             "siaga"=>$request->siaga,
             "awas"=>$request->awas,
             "rtsp_port"=>$request->rtsp_port,
-            "status"=>$request->status
+            "state"=>$request->state
         ]);
         return response()->json([
             "status"=>"OKE",

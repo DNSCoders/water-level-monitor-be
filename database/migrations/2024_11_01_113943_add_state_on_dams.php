@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('dams', function (Blueprint $table) {
-            $table->string('rtsp_port')->nullable();
+            $table->boolean('state')->nullable();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('dams', function (Blueprint $table) {
-            $table->dropColumn(['rtsp_port']);
+            $table->dropColumn(['state']);
         });
     }
 };
