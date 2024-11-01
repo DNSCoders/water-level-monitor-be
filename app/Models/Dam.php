@@ -16,7 +16,9 @@ class Dam extends Model
         "lat",
         "siap",
         "siaga",
-        "awas"
+        "awas",
+        "status",
+        "rtsp_port"
     ];
 
     public function pobs()
