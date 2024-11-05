@@ -17,7 +17,7 @@ class DamController extends Controller
             return $dam->latest_debit_report->created_at ?? null;
         })->filter()->max();
         
-        $date = $latestDate ? Carbon::parse($latestDate)->format('d F Y H:i:s') : now()->format('d F Y H:i:s');
+        $date = $latestDate ? Carbon::parse($latestDate)->format('d F Y H:i:s') : "";
 
         $response = [
             'data' => $data->items(), // Use items() to get the paginated data array
