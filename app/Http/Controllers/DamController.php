@@ -35,7 +35,8 @@ class DamController extends Controller
                 'per_page' => $data->perPage(),
                 'current_page' => $data->currentPage(),
                 'total_pages' => $data->lastPage(),
-            ]
+            ],
+'total' => $data->total()
         ];
     
         return response()->json($response, 200);
