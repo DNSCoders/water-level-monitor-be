@@ -86,7 +86,7 @@
                     <td>{{ $dam->latest_debit_report ? $dam->latest_debit_report->limpas.' m' : '' }}</td>
                     <td>{{ $dam->latest_debit_report ? $dam->latest_debit_report->debit.' m3/dtk' : '' }} </td>
                     <td>{{ $dam->latest_debit_report ? $dam->latest_debit_report->cuaca : '' }}</td>
-                    <td>{{ $dam->status }}</td>
+                    <td>{{ $dam->latest_debit_report ? $dam->latest_debit_report->status : "" }}</td>
                 </tr>
             @endforeach
         </tbody>
